@@ -1,6 +1,7 @@
 import { useState } from "react";
+import node from "../services/node";
 
-const PersonForm = ({persons, setPersons}) => {
+const PersonForm = ({ persons, setPersons }) => {
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const handleNameChange = (event) => {
@@ -24,9 +25,12 @@ const PersonForm = ({persons, setPersons}) => {
       alert(`${newName} is already added to phonebook`);
       return;
     }
-    setPersons(persons.concat(nameObject));
-    setNewName("");
-    setNewPhone("");
+
+    node.createPerson(nameObject).then((returnedPerson) => {
+      setPersons(persons.concat(returnedPerson));
+      setNewName("");
+      setNewPhone("");
+    });
   };
 
   return (
