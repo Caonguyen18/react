@@ -14,7 +14,6 @@ const App = () => {
     });
   }, []);
 
-  
   return (
     <div>
       <h2>Phonebook</h2>
@@ -22,7 +21,7 @@ const App = () => {
       <h2>Add a new</h2>
       <PersonForm persons={persons} setPersons={setPersons} />
       <h2>Numbers</h2>
-      <Person persons={persons} filter={filter} />
+      <Person persons={persons} filter={filter} setPersons={setPersons} />
     </div>
   );
 };
